@@ -11,8 +11,8 @@ package fourmiappli;
  */
 public abstract class FourmiLarve extends Fourmi {
     
-    protected static final String ROLE = "je suis une larve";
-    protected static final int AGEMAX = 5;
+    private static final String ROLE = "je suis une larve";
+    private static final int AGEMAX = 5;
     
     public FourmiLarve()
     {
@@ -24,7 +24,7 @@ public abstract class FourmiLarve extends Fourmi {
         super(a);
     }
     
-    public String toString()
+    public String role()
     {
         return this.ROLE;
     }
@@ -45,23 +45,21 @@ public abstract class FourmiLarve extends Fourmi {
         Fourmi ant;
         
         // si babyAnt n a pas encore atteint son age max
+        // elle reste une larve
         if(this.vieillir() != 0)
         {
             ant = this;
         }
+        //sinon elle passe a l age adulte
         else
         {
             ant = this.transform(this.vieillir());
         }
         
         return ant;
-    
     }
     
     //methode transform est abstraite dans la classe FourmiLarve.
     public abstract Fourmi transform(int id);
-    
-    
-    
-    
+
 }
