@@ -25,6 +25,7 @@ public abstract class FourmiAdulte extends Fourmi{
     {
         Fourmi ant = this;
         
+        // si different de zero c est que la fourmi a atteint son age maxi
         if(ant.vieillir()!=0)
         {
             ant = null;

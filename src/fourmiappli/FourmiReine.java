@@ -40,4 +40,10 @@ public class FourmiReine extends FourmiAdulte {
         return atteint;
     }
     
+    public Fourmi[] pondre(){
+        // a ecrire ...
+        Fourmi[] tabForumi = {};
+        return tabForumi;
+    }
+    
 }
