@@ -18,7 +18,7 @@ public class FourmiLarveReine extends FourmiLarve {
     
     public Fourmi transform(int id)
     {
-        FourmiReine queenAnt = new FourmiReine(5,id);
+        FourmiReine queenAnt = new FourmiReine(id,5);
         
         return queenAnt;
     }

@@ -42,21 +42,16 @@ public abstract class FourmiLarve extends Fourmi {
     
     public Fourmi evolue()
     {
-        Fourmi ant;
+        int id = super.vieillir();
         
-        // si babyAnt n a pas encore atteint son age max
-        // elle reste une larve
-        if(this.vieillir() != 0)
+        if(id==0)
         {
-            ant = this;
+            return this;
         }
-        //sinon elle passe a l age adulte
         else
         {
-            ant = this.transform(this.vieillir());
-        }
-        
-        return ant;
+            return transform(id);
+        }       
     }
     
     //methode transform est abstraite dans la classe FourmiLarve.

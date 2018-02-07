@@ -19,7 +19,7 @@ public class FourmiLarveOuvriere extends FourmiLarve {
     public Fourmi transform(int id)
     {
         //ant = this.transform(this.vieillir());
-        FourmiOuvriere workerAnt = new FourmiOuvriere(5,id);
+        FourmiOuvriere workerAnt = new FourmiOuvriere(id,5);
         
         return workerAnt;
     }

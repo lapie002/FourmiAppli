@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package fourmiappli;
+import java.util.Random;
 
 /**
  *
@@ -40,10 +41,41 @@ public class FourmiReine extends FourmiAdulte {
         return atteint;
     }
     
-    public Fourmi[] pondre(){
+    public Fourmi[] pondre()
+    {
         // a ecrire ...
-        Fourmi[] tabForumi = {};
-        return tabForumi;
+        Fourmi[] tabForumiLarve = new Fourmi[3];
+        
+        Random nbRandom = new Random(); 
+        
+        int chance;
+        
+        for(int i=0;i<tabForumiLarve.length;i++)
+        {
+            chance = nbRandom.nextInt(10);
+            
+            switch(chance)
+            {
+                case 0:
+                    FourmiLarveMale lm1  = new FourmiLarveMale();
+                    tabForumiLarve[i] = lm1;
+                    break;
+                case 1:
+                    FourmiLarveReine lr  = new FourmiLarveReine();
+                    tabForumiLarve[i] = lr;
+                    break;
+                case 2:
+                    FourmiLarveMale lm2  = new FourmiLarveMale();
+                    tabForumiLarve[i] = lm2;
+                    break;
+                default:
+                    FourmiLarveOuvriere louv  = new FourmiLarveOuvriere();
+                    tabForumiLarve[i] = louv;
+            }
+        }
+        return tabForumiLarve;
     }
+    
+    
     
 }

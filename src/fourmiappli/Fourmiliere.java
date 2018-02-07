@@ -19,10 +19,12 @@ public class Fourmiliere {
     {
         this.ma_fourmiliere  = new ArrayList<Fourmi>();
         
-        FourmiReine queenAnt = new FourmiReine(6);
+        FourmiReine queenAnt = new FourmiReine(10);
+        //FourmiMale maleAntZeroTest   = new FourmiMale(6);
         FourmiMale maleAnt   = new FourmiMale(6);
         
         this.ma_fourmiliere.add(queenAnt);
+        //this.ma_fourmiliere.add(maleAntZeroTest);
         this.ma_fourmiliere.add(maleAnt);
         
         for(int i = 0; i<n-2; i++)
@@ -33,34 +35,62 @@ public class Fourmiliere {
           
     }
     
-    public void evolue()
+    public boolean evolue()
     {
-        for(int j = 0; j<this.ma_fourmiliere.size();j++)
+        Fourmi myAnt;	
+        Fourmi[] tableauDeLarvesDeFourmis;
+        boolean isThereQueen = false;
+        
+        for(int j = this.ma_fourmiliere.size()-1;j>=0;j--)
         {
-            Fourmi myAnt = this.ma_fourmiliere.get(j);
-            myAnt.evolue();
+            myAnt = this.ma_fourmiliere.get(j);
+            myAnt = myAnt.evolue();//renvoie null si doit mourir
             
-            if(myAnt==null)
+            if(myAnt == null)
             {
                 this.ma_fourmiliere.remove(j);
-                j--;
             }
-            else if(myAnt!=this.ma_fourmiliere.get(j))
+            else
             {
-                this.ma_fourmiliere.remove(j);
-                j--;
-                this.ma_fourmiliere.add(myAnt);
+                
+                this.ma_fourmiliere.set(j, myAnt);
+                tableauDeLarvesDeFourmis = myAnt.pondre();
+                
+                if(tableauDeLarvesDeFourmis != null)
+                {
+                    for(int i = 0; i<tableauDeLarvesDeFourmis.length;i++)
+                    {
+                        this.ma_fourmiliere.add(tableauDeLarvesDeFourmis[i]);
+                        isThereQueen = true; 
+                    }
+                }        
             }
         }
-        
-        this.pondre();
-    
+        return isThereQueen;
     }
     
-    public void pondre()
+    public String toString()
     {
-    //a ecrire ...
-    
+        String str = "";
+        
+        for(int k = 0; k<this.ma_fourmiliere.size();k++)
+        {
+            Fourmi myAnt = this.ma_fourmiliere.get(k);
+            str = str + myAnt.toString() + "\n";
+        }
+        return str;
     }
+    
+    public int nbFourmi()
+    {
+        int nb = 0;
+        
+        for(int k = 0; k<this.ma_fourmiliere.size();k++)
+        {
+            nb++;
+        }
+        return nb;
+    }
+    
     
 }
